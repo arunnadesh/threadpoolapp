@@ -1,0 +1,37 @@
+PROJECT(app)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
+set(CPP_FLAGS "-std=c++0x -Wall")
+set(CPP_FLAGS_DEBUG "-g")
+set(CPP_FLAGS_RELEASE "-O2")
+
+SET( CMAKE_CXX_FLAGS  ${CPP_FLAGS} )
+SET( CMAKE_CXX_FLAGS_RELEASE  ${CPP_FLAGS_RELEASE} )
+SET( CMAKE_CXX_FLAGS_DEBUG  ${CPP_FLAGS_DEBUG} )
+
+
+add_subdirectory(ThreadPool)
+
+SET(HEADERS ${CMAKE_SOURCE_DIR}/ThreadPool/include)
+
+SET(CPPFILES ${CMAKE_SOURCE_DIR})
+
+SET(APPSRCS ${CPPFILES}/Threadpooldriver.cpp
+   )
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+#link_directories(${CMAKE_SOURCE_DIR}/ThreadPool)
+
+SET(LINKLIBS pthread threadpool)
+
+INCLUDE_DIRECTORIES(
+  ${HEADERS}
+  )
+
+ADD_EXECUTABLE(Threadpoolapp ${APPSRCS})
+
+target_link_libraries(Threadpoolapp ${LINKLIBS})
+
