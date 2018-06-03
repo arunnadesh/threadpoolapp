@@ -13,13 +13,9 @@ class Job
         {  
             func= funcptr;
             arg = funarg;
-            cout<<"Argument: "<<arg<<endl;
-            cout<<"Value: "<<*(int*)arg<<endl;
         }
 
         void operator()(){
-          cout<<"Argument: "<<arg<<endl;
-          cout<<"Value: "<<*(int*)arg<<endl;
           (*func)(arg);
         }
 
