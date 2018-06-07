@@ -34,7 +34,6 @@ int main()
 
    thPool.threadpool_destroy();
 
-   // TODO: delete worker objects
 
    cout << "Exiting app..." << endl;
 
